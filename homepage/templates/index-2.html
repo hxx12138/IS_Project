@@ -45,8 +45,8 @@
                                                 <i class="fa fa-angle-down"></i>
                                             </a>
                                             <ul class="language__name">
-                                                <li><a href="#"><img src="assets/img/1.jpg" alt=""><span>English</span></a></li>
-                                                <li><a  href="#"><img src="assets/img/banner/frances2.jpg" alt=""><span>Français</span></a></li>
+                                                <li><a href="#"><img src="{% static 'img/1.jpg' %}" alt=""><span>English</span></a></li>
+                                                <li><a  href="#"><img src="{% static 'img/banner/frances2.jpg' %}" alt=""><span>Français</span></a></li>
                                             </ul>
                                         </li>
                                         <li class="language_wrapper_one">
@@ -114,7 +114,7 @@
 												<div class="mini_cart_item">
 													<div class="mini_cart_img">
 														<a href="#">
-															<img src="assets/img/cart/1.jpg" alt="">
+															<img src="{% static 'img/cart/1.jpg' %}" alt="">
 															<span class="cart_count">1x</span>
 														</a>
 													</div>
@@ -129,7 +129,7 @@
 												<div class="mini_cart_item">
 													<div class="mini_cart_img">
 														<a href="#">
-															<img src="assets/img/cart/2.jpg" alt="">
+															<img src="{% static 'img/cart/2.jpg' %}" alt="">
 															<span class="cart_count">1x</span>
 														</a>
 													</div>
@@ -354,7 +354,7 @@
                                 <div class="shipping_list d-flex justify-content-between">
                                     <div class="single_shipping_box d-flex">
                                         <div class="shipping_icon">
-                                            <img src="assets/img/ship/1.png" alt="shipping icon">
+                                            <img src="{% static 'img/ship/1.png' %}" alt="shipping icon">
                                         </div>
                                         <div class="shipping_content">
                                             <h6>Free Shipping On Order Over $120</h6>
@@ -363,7 +363,7 @@
                                     </div>
                                     <div class="single_shipping_box one d-flex">
                                         <div class="shipping_icon">
-                                            <img src="assets/img/ship/2.png" alt="shipping icon">
+                                            <img src="{% static 'img/ship/2.png' %}" alt="shipping icon">
                                         </div>
                                         <div class="shipping_content">
                                             <h6>Money Return</h6>
@@ -372,7 +372,7 @@
                                     </div>
                                     <div class="single_shipping_box two d-flex">
                                         <div class="shipping_icon">
-                                            <img src="assets/img/ship/3.png" alt="shipping icon">
+                                            <img src="{% static 'img/ship/3.png' %}" alt="shipping icon">
                                         </div>
                                         <div class="shipping_content">
                                             <h6>Member Discount</h6>
@@ -381,7 +381,7 @@
                                     </div>
                                     <div class="single_shipping_box d-flex">
                                         <div class="shipping_icon">
-                                            <img src="assets/img/ship/4.png" alt="shipping icon">
+                                            <img src="{% static 'img/ship/4.png' %}" alt="shipping icon">
                                         </div>
                                         <div class="shipping_content">
                                             <h6>Online Support 24/7</h6>
@@ -2434,16 +2434,16 @@
 		
 		
 		<!-- all js here -->
-        <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="assets/js/popper.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/ajax-mail.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="{% static 'js/vendor/jquery-1.12.0.min.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'js/waypoints.min.js' %}"></script>
+        <script src="{% static 'js/ajax-mail.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
     </body>
 </html>
