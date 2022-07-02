@@ -1,0 +1,115 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">财务管理</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">修改销售订单</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary">更多功能</button>
+							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                <a class="dropdown-item" href="/purchase_orders/">采购订单管理</a>
+								<a class="dropdown-item" href="/sales_orders/">销售订单管理</a>
+                                <a class="dropdown-item" href="/income_manage/">收入管理</a>
+                                <a class="dropdown-item" href="/expenditure_manage/">支出管理</a>
+								<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">资金支出</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+                <form method="post">
+                    {% csrf_token %}
+              <div class="card">
+				  <div class="card-body p-4">
+					  <h5 class="card-title">修改 {{ info.xiaoshou_id }} 号销售订单</h5>
+					  <hr>
+                       <div class="form-body mt-4">
+                   <form class="form-horizontal" method="post" action="/edit_sales_order/">
+                    {% csrf_token %}
+					    <div class="row">
+						   <div class="col-lg-8">
+                           <div class="border border-3 p-4 rounded">
+                               <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">订单编号(不推荐修改)</label>
+								<input class="form-control" name="nid" value={{ info.xiaoshou_id }}></input>
+							  </div>
+							  <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">订单详情</label>
+								<textarea class="form-control" name="details" rows="10"></textarea>
+							  </div>
+							  <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">添加附件</label>
+								<input name="image-uploadify" type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple="">
+							  </div>
+                            </div>
+						   </div>
+						   <div class="col-lg-4">
+							<div class="border border-3 p-4 rounded">
+                              <div class="row g-3">
+								<div class="col-md-6">
+									<label for="inputPrice" class="form-label">收货人姓名</label>
+									<input type="text" class="form-control" name="rname" value={{ info.shouhuorenxingming }}>
+								  </div>
+                                  <div class="col-md-6">
+									<label for="inputPrice" class="form-label">收货人联系方式</label>
+									<input type="text" class="form-control" name="phone" value={{ info.shouhuorenlianxi }}>
+								  </div>
+                                  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">收获地址</label>
+									<input type="text" class="form-control" name="location" value={{ info.shouhuodizhi }}>
+								  </div>
+                                  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">下单账号id</label>
+									<input type="text" class="form-control" name="cid" value={{ info.xiadanzhanghu }}>
+								  </div>
+								  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">配送员编号</label>
+									<input type="text" class="form-control" name="wid" placeholder={{ info.peisongyuan_id }}>
+								  </div>
+                                  <div class="col-md-6">
+									<label for="inputCollection" class="form-label">销售凭证编号</label>
+									<input type="text" class="form-control" name="sdid" value={{ info.pingzhengbianhao }}>
+								  </div>
+                                  <div class="col-12">
+									<label for="inputProductType" class="form-label">下单时间</label>
+									<input type="date" class="form-control" name="time" placeholder={{ info.xiadanshijian }}>
+								  </div>
+								  <div class="col-12">
+									<label for="inputVendor" class="form-label">订单状态</label>
+									<select class="form-select" name="status">
+										<option value="未配送">未配送</option>
+										<option value="配送中">配送中</option>
+										<option value="已送达">已送达</option>
+                                        <option value="已取消">已取消</option>
+									  </select>
+								  </div>
+								  <div class="col-12">
+									  <div class="d-grid">
+                                         <button type="submit" class="btn btn-primary">保存订单</button>
+                                      </div>
+								  </div>
+							  </div>
+						  </div>
+						  </div>
+					   </div><!--end row-->
+                       </form>
+					</div>
+				  </div>
+			  </div>
+			</div>
+		</div>
+{% endblock %}

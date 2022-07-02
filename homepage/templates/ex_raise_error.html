@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="page-wrapper">
+<nav class="navbar navbar-expand-lg navbar-light bg-white rounded fixed-top rounded-0 shadow-sm">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="/static/picture/haima.png" width="35" alt="">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+				</button>
+{#				<div class="collapse navbar-collapse" id="navbarSupportedContent1">#}
+{#					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">#}
+{#						<li class="nav-item"> <a class="nav-link active" aria-current="page" href="#"><i class='bx bx-home-alt me-1'></i>Home</a>#}
+{#						</li>#}
+{#						<li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-user me-1'></i>About</a>#}
+{#						</li>#}
+{#						<li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-category-alt me-1'></i>Features</a>#}
+{#						</li>#}
+{#						<li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-microphone me-1'></i>Contact</a>#}
+{#						</li>#}
+{#					</ul>#}
+{#				</div>#}
+			</div>
+		</nav>
+    <div class="error-404 d-flex align-items-center justify-content-center">
+			<div class="container">
+				<div class="card">
+					<div class="row g-0">
+						<div class="col-xl-5">
+							<div class="card-body p-4">
+								<h1 class="display-1"><span class="text-warning">!</span><span class="text-danger">!</span><span class="text-primary">!出错啦</span></h1>
+								<h2 class="font-weight-bold display-4">抱歉,您所选择的仓库储量不足</h2>
+								<div class="mt-5">	<a href="/ex_warehouse/" class="btn btn-lg btn-primary px-md-5 radius-30">返回上页</a>
+									<a href="/storage_details/" class="btn btn-lg btn-outline-dark ms-3 px-md-5 radius-30">查看库存情况</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-7">
+							<img src="/static/picture/buzu.jpg" class="img-fluid" alt="">
+						</div>
+					</div>
+					<!--end row-->
+				</div>
+			</div>
+		</div>
+</div>
+{% endblock %}

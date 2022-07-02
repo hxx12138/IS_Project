@@ -1,0 +1,1 @@
+$(document).ready(function() {window.location.href = "#come here";});

@@ -1,0 +1,148 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <div class="page-content">
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">采购部门</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a href="/index"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <a href="/purchase_department">原材料供应商信息检索</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <a href="/GYS">原材料供应商信息添加</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="ms-auto">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary">Settings</button>
+                        <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
+                            <a class="dropdown-item" href="javascript:;">Another action</a>
+                            <a class="dropdown-item" href="javascript:;">Something else here</a>
+                            <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end breadcrumb-->
+
+
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h4 class="mb-0 text-uppercase">添加供应商的原材料信息</h4>
+                    <hr>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="border p-3 rounded">
+                                <div class="panel-body">
+                                    <form class="form-horizontal" method="post" action="/GYS_add/">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label class="form-label">原材料ID</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="yuancailiao_id" class="form-control" placeholder="eg:YCL0000004">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">仓库ID</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="cangku_id" class="form-control" placeholder="CK0001">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">供应商ID</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="gongyingshang_id" class="form-control" placeholder="GYS00004">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">供应商名称</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="gongyingshang_name" class="form-control" placeholder="伊不利">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">原材料名称</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="yuancailiao_zhonglei" class="form-control" placeholder="伊不利牛奶">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">原材料质量</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="yuancailiao_zhiliang" class="form-control" placeholder="一级">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">原材料单价</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="yuancailiao_danjia" class="form-control" placeholder="￥4">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">原材料最大供应量</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="yuancailiao_max" class="form-control" placeholder="10000">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">生产日期</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="shengchanriqi" class="form-control" placeholder="2020-05-20">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">保质期（天）</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="baozhiqi" class="form-control" placeholder="7">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">产地</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="chandi" class="form-control" placeholder="呼伦贝尔大草原">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-default">
+                                                <a class="btn btn-primary radius-30 mt-2 mt-lg-0">
+                                                    提交
+                                                </a>
+                                            </button>
+                                        </div>
+
+                                    </form>
+
+                                    <!--
+                                    <form method="post" action="/friends/add">
+                                        {% csrf_token %}
+                                        <input type="text" name="name" placeholder="你的大名">
+                                        <input type="text" name="birthday" placeholder="你的生日">
+                                        <input type="text" name="hobby" placeholder="你的爱好">
+                                        <input type="submit" value="提交">
+                                    </form> -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end row-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

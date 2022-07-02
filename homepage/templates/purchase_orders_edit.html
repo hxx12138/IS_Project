@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">原材料采购管理</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="/index">
+                                    <i class="bx bx-home-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="/purchase_department">
+                                        原材料&供应商信息检索
+                                    </a>
+                                </li>
+								<li class="breadcrumb-item active" aria-current="page">
+                                    修改采购订单
+                                </li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+              <div class="card">
+				  <div class="card-body p-4">
+					  <h5 class="card-title">修改 {{ info.caigou_caigou_id }} 号订单信息</h5>
+					  <hr>
+                       <div class="form-body mt-4">
+                    <form class="form-horizontal" method="post" action="/purchase_orders_edit/">
+                    {% csrf_token %}
+					    <div class="row">
+						   <div class="col-lg-8">
+                           <div class="border border-3 p-4 rounded">
+                               <div class="mb-3">
+								<label for="inputProductTitle" class="form-label">采购订单编号</label>
+								<input type="text" class="form-control" name="inputpurchaseorder" placeholder={{ info.caigou_caigou_id }}>
+							  </div>
+							  <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">订单详情</label>
+								<textarea class="form-control" name="inputdetails" rows="10" placeholder={{ info.caigou_caigou_zongjine }}></textarea>
+							  </div>
+							  <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">上传附件</label>
+								<input name="image-uploadify" type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple="">
+							  </div>
+                            </div>
+						   </div>
+						   <div class="col-lg-4">
+							<div class="border border-3 p-4 rounded">
+                              <div class="row g-3">
+								<div class="col-md-6">
+									<label for="inputPrice" class="form-label">采购时间</label>
+									<input type="date" class="form-control" name="inputdate" placeholder={{ info.caigou_caigoushijian }}>
+								  </div>
+								  <div class="col-md-6">
+									<label for="inputCompareatprice" class="form-label">预期到货时间</label>
+									<input type="date" class="form-control" name="inputexpecttime" placeholder={{ info.caigou_yuqidaohuoshijian }}>
+								  </div>
+								  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">负责人编号</label>
+									<input type="text" class="form-control" name="inputid" placeholder={{ info.caigou_fuzeren }}>
+								  </div>
+                                  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">供应商编号</label>
+									<input type="text" class="form-control" name="inputsupplierid" placeholder={{ info.caigou_gongyingshang_id }}>
+								  </div>
+								  <div class="col-12">
+									<label for="inputVendor" class="form-label">订单状态</label>
+									<select class="form-select" name="inputstatus">
+										<option></option>
+										<option value="1">货物未到库</option>
+										<option value="2">货物已到库，待付款</option>
+										<option value="3">已付款</option>
+									  </select>
+								  </div>
+								  <div class="col-12">
+									<label for="inputCollection" class="form-label">采购凭证编号</label>
+									<input type="text" class="form-control" name="inputpdid" placeholder={{ info.caigou_pingzheng }}>
+								  </div>
+								  <div class="col-12">
+									  <div class="d-grid">
+                                         <button type="submit" class="btn btn-primary">保存修改</button>
+									  </div>
+								  </div>
+							  </div>
+						  </div>
+						  </div>
+					   </div><!--end row-->
+                           </form>
+					</div>
+				  </div>
+			  </div>
+			</div>
+		</div>
+{% endblock %}

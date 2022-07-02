@@ -23,6 +23,9 @@
 	<link rel="stylesheet" href="/static/css/dark-theme.css">
 	<link rel="stylesheet" href="/static/css/semi-dark.css">
 	<link rel="stylesheet" href="/static/css/header-colors.css">
+    <!--张文翔的css-->
+    <link href="/static/css/select2.min.css" rel="stylesheet">
+	<link href="/static/css/select2-bootstrap4.css" rel="stylesheet">
 	<title>海马生鲜后台管理系统</title>
 </head>
 
@@ -33,7 +36,7 @@
 		<div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div>
-					<img src="/static/picture/logo-icon.png" class="logo-icon" alt="logo icon">
+					<img src="/static/picture/haima.png" class="logo-icon" alt="logo icon">
 				</div>
 				<div>
 					<h4 class="logo-text">海马生鲜</h4>
@@ -50,9 +53,9 @@
 						<div class="menu-title">信息总览</div>
 					</a>
 					<ul>
-						<li> <a href=""><i class="bx bx-right-arrow-alt"></i>员工管理</a>
+						<li> <a href="/employee_management"><i class="bx bx-right-arrow-alt"></i>员工管理</a>
 						</li>
-						<li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>部门管理</a>
+						<li> <a href="/department_management"><i class="bx bx-right-arrow-alt"></i>部门管理</a>
 						</li>
 					</ul>
 				</li>
@@ -63,127 +66,28 @@
 						<div class="menu-title">系统功能</div>
 					</a>
 					<ul>
-						<li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>采购部门管理子系统</a>
+						<li> <a href="/purchase_department"><i class="bx bx-right-arrow-alt"></i>采购部门管理子系统</a>
 						</li>
-						<li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>库存部门子系统</a>
+						<li> <a href="/receipt_confirm"><i class="bx bx-right-arrow-alt"></i>库存部门子系统</a>
 						</li>
-						<li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>销售部门子系统</a>
+						<li> <a href="/sales_management"><i class="bx bx-right-arrow-alt"></i>销售部门子系统</a>
 						</li>
-						<li> <a href="app-contact-list.html"><i class="bx bx-right-arrow-alt"></i>物流部门子系统</a>
+						<li> <a href="/wuliu"><i class="bx bx-right-arrow-alt"></i>物流部门子系统</a>
 						</li>
-						<li> <a href="app-to-do.html"><i class="bx bx-right-arrow-alt"></i>客服部门子系统</a>
+						<li> <a href="/page_kf"><i class="bx bx-right-arrow-alt"></i>疫情溯源子系统</a>
 						</li>
-						<li> <a href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i>财务部门子系统</a>
+						<li> <a href="/purchase_orders"><i class="bx bx-right-arrow-alt"></i>财务部门子系统</a>
 						</li>
-						<li> <a href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>人力资源部门子系统</a>
-						</li>
-					</ul>
-				</li>
-
-				<li class="menu-label">UI Elements</li>
-				<li>
-					<a href="widgets.html">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
-						</div>
-						<div class="menu-title">Widgets</div>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-cart'></i>
-						</div>
-						<div class="menu-title">eCommerce</div>
-					</a>
-					<ul>
-						<li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>Products</a>
-						</li>
-						<li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>Product Details</a>
-						</li>
-						<li> <a href="ecommerce-add-new-products.html"><i class="bx bx-right-arrow-alt"></i>Add New Products</a>
-						</li>
-						<li> <a href="ecommerce-orders.html"><i class="bx bx-right-arrow-alt"></i>Orders</a>
+						<li> <a href="/error"><i class="bx bx-right-arrow-alt"></i>人力资源部门子系统</a>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-						</div>
-						<div class="menu-title">Components</div>
-					</a>
-					<ul>
-						<li> <a href="component-alerts.html"><i class="bx bx-right-arrow-alt"></i>Alerts</a>
-						</li>
-						<li> <a href="component-accordions.html"><i class="bx bx-right-arrow-alt"></i>Accordions</a>
-						</li>
-						<li> <a href="component-badges.html"><i class="bx bx-right-arrow-alt"></i>Badges</a>
-						</li>
-						<li> <a href="component-buttons.html"><i class="bx bx-right-arrow-alt"></i>Buttons</a>
-						</li>
-						<li> <a href="component-cards.html"><i class="bx bx-right-arrow-alt"></i>Cards</a>
-						</li>
-						<li> <a href="component-carousels.html"><i class="bx bx-right-arrow-alt"></i>Carousels</a>
-						</li>
-						<li> <a href="component-list-groups.html"><i class="bx bx-right-arrow-alt"></i>List Groups</a>
-						</li>
-						<li> <a href="component-media-object.html"><i class="bx bx-right-arrow-alt"></i>Media Objects</a>
-						</li>
-						<li> <a href="component-modals.html"><i class="bx bx-right-arrow-alt"></i>Modals</a>
-						</li>
-						<li> <a href="component-navs-tabs.html"><i class="bx bx-right-arrow-alt"></i>Navs & Tabs</a>
-						</li>
-						<li> <a href="component-navbar.html"><i class="bx bx-right-arrow-alt"></i>Navbar</a>
-						</li>
-						<li> <a href="component-paginations.html"><i class="bx bx-right-arrow-alt"></i>Pagination</a>
-						</li>
-						<li> <a href="component-popovers-tooltips.html"><i class="bx bx-right-arrow-alt"></i>Popovers & Tooltips</a>
-						</li>
-						<li> <a href="component-progress-bars.html"><i class="bx bx-right-arrow-alt"></i>Progress</a>
-						</li>
-						<li> <a href="component-spinners.html"><i class="bx bx-right-arrow-alt"></i>Spinners</a>
-						</li>
-						<li> <a href="component-notifications.html"><i class="bx bx-right-arrow-alt"></i>Notifications</a>
-						</li>
-						<li> <a href="component-avtars-chips.html"><i class="bx bx-right-arrow-alt"></i>Avatrs & Chips</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-repeat"></i>
-						</div>
-						<div class="menu-title">Content</div>
-					</a>
-					<ul>
-						<li> <a href="content-grid-system.html"><i class="bx bx-right-arrow-alt"></i>Grid System</a>
-						</li>
-						<li> <a href="content-typography.html"><i class="bx bx-right-arrow-alt"></i>Typography</a>
-						</li>
-						<li> <a href="content-text-utilities.html"><i class="bx bx-right-arrow-alt"></i>Text Utilities</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"> <i class="bx bx-donate-blood"></i>
-						</div>
-						<div class="menu-title">Icons</div>
-					</a>
-					<ul>
-						<li> <a href="icons-line-icons.html"><i class="bx bx-right-arrow-alt"></i>Line Icons</a>
-						</li>
-						<li> <a href="icons-boxicons.html"><i class="bx bx-right-arrow-alt"></i>Boxicons</a>
-						</li>
-						<li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Feather Icons</a>
-						</li>
-					</ul>
-				</li>
-				<li class="menu-label">Forms & Tables</li>
+				<li class="menu-label">表单及表格</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class='bx bx-message-square-edit'></i>
 						</div>
-						<div class="menu-title">Forms</div>
+						<div class="menu-title">表单</div>
 					</a>
 					<ul>
 						<li> <a href="form-elements.html"><i class="bx bx-right-arrow-alt"></i>Form Elements</a>
@@ -210,7 +114,7 @@
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class="bx bx-grid-alt"></i>
 						</div>
-						<div class="menu-title">Tables</div>
+						<div class="menu-title">表格</div>
 					</a>
 					<ul>
 						<li> <a href="table-basic-table.html"><i class="bx bx-right-arrow-alt"></i>Basic Table</a>
@@ -221,81 +125,12 @@
 						</li>
 					</ul>
 				</li>
-				<li class="menu-label">Pages</li>
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-lock"></i>
-						</div>
-						<div class="menu-title">Authentication</div>
-					</a>
-					<ul>
-						<li> <a href="authentication-signin.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign In</a>
-						</li>
-						<li> <a href="authentication-signup.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign Up</a>
-						</li>
-						<li> <a href="authentication-signin-with-header-footer.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign In with Header & Footer</a>
-						</li>
-						<li> <a href="authentication-signup-with-header-footer.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign Up with Header & Footer</a>
-						</li>
-						<li> <a href="authentication-forgot-password.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Forgot Password</a>
-						</li>
-						<li> <a href="authentication-reset-password.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Reset Password</a>
-						</li>
-						<li> <a href="authentication-lock-screen.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Lock Screen</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="user-profile.html">
-						<div class="parent-icon"><i class="bx bx-user-circle"></i>
-						</div>
-						<div class="menu-title">User Profile</div>
-					</a>
-				</li>
-				<li>
-					<a href="timeline.html">
-						<div class="parent-icon"> <i class="bx bx-video-recording"></i>
-						</div>
-						<div class="menu-title">Timeline</div>
-					</a>
-				</li>
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-error"></i>
-						</div>
-						<div class="menu-title">Errors</div>
-					</a>
-					<ul>
-						<li> <a href="errors-404-error.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>404 Error</a>
-						</li>
-						<li> <a href="errors-500-error.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>500 Error</a>
-						</li>
-						<li> <a href="errors-coming-soon.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Coming Soon</a>
-						</li>
-						<li> <a href="error-blank-page.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Blank Page</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="faq.html">
-						<div class="parent-icon"><i class="bx bx-help-circle"></i>
-						</div>
-						<div class="menu-title">FAQ</div>
-					</a>
-				</li>
-				<li>
-					<a href="pricing-table.html">
-						<div class="parent-icon"><i class="bx bx-diamond"></i>
-						</div>
-						<div class="menu-title">Pricing</div>
-					</a>
-				</li>
-				<li class="menu-label">Charts & Maps</li>
+				<li class="menu-label">图表与地图</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class="bx bx-line-chart"></i>
 						</div>
-						<div class="menu-title">Charts</div>
+						<div class="menu-title">图表与可视化</div>
 					</a>
 					<ul>
 						<li> <a href="charts-apex-chart.html"><i class="bx bx-right-arrow-alt"></i>Apex</a>
@@ -310,7 +145,7 @@
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class="bx bx-map-alt"></i>
 						</div>
-						<div class="menu-title">Maps</div>
+						<div class="menu-title">地图s</div>
 					</a>
 					<ul>
 						<li> <a href="map-google-maps.html"><i class="bx bx-right-arrow-alt"></i>Google Maps</a>
@@ -319,38 +154,19 @@
 						</li>
 					</ul>
 				</li>
-				<li class="menu-label">Others</li>
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-menu"></i>
-						</div>
-						<div class="menu-title">Menu Levels</div>
-					</a>
-					<ul>
-						<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-right-arrow-alt"></i>Level One</a>
-							<ul>
-								<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-right-arrow-alt"></i>Level Two</a>
-									<ul>
-										<li> <a href="javascript:;"><i class="bx bx-right-arrow-alt"></i>Level Three</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
+				<li class="menu-label">其他</li>
 				<li>
 					<a href="javascript:;" target="_blank">
 						<div class="parent-icon"><i class="bx bx-folder"></i>
 						</div>
-						<div class="menu-title">Documentation</div>
+						<div class="menu-title">项目文档</div>
 					</a>
 				</li>
 				<li>
 					<a href="javascript:;" target="_blank">
 						<div class="parent-icon"><i class="bx bx-support"></i>
 						</div>
-						<div class="menu-title">Support</div>
+						<div class="menu-title">项目支持</div>
 					</a>
 				</li>
 			</ul>
@@ -742,12 +558,12 @@
 			<hr>
 			<div class="d-flex align-items-center justify-content-between">
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked="">
-					<label class="form-check-label" for="lightmode">Light</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode" checked="darkmode">
 					<label class="form-check-label" for="darkmode">Dark</label>
+				</div>
+                <div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" >
+					<label class="form-check-label" for="lightmode">Light</label>
 				</div>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
@@ -841,6 +657,11 @@
 	<script src="/static/js/index.js"></script>
 	<!--app JS-->
 	<script src="/static/js/app.js"></script>
+
+    <!--张文翔的js-->
+    <script src="/static/js/select2.min.js"></script>
+	<script src="/static/js/form-select2.js"></script>
+	<script src="/static/js/jquery.js"></script>  <!--这一条是我写的，不是自带的-->
 
 </body>
 

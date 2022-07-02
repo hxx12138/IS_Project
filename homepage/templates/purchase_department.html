@@ -1,0 +1,195 @@
+{% extends 'layout.html' %}
+<html lang="en">
+{% block content %}
+    <!--start page wrapper -->
+    <div class="page-wrapper">
+        <div class="page-content">
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">采购部门</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a href="/index">
+                                <i class="bx bx-home-alt"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">原材料供应商信息检索</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="ms-auto">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary">预采购订单管理</button>
+                        <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                            <a class="dropdown-item" href="/purchase_orders_show">查看当前预采购订单</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end breadcrumb-->
+
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <!--row-->
+                    <div class="row">
+                        <div class="col-xl-11 mx-auto"  lang="en">
+                            <h4 class="mb-0 text-uppercase">复合信息检索框</h4>
+                            <hr>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="border p-3 rounded">
+                                        <form class="form-horizontal" method="post" action="/purchase_department/">
+                                            {% csrf_token %}
+                                        <div class="mb-3 select2-sm">
+                                            <label class="form-label">依据原材料id检索</label>
+                                                <div class="input-group">
+                                                    <select class="multiple-select" data-placeholder="Choose anything" multiple="multiple" name="yuancailiao_id">
+                                                        {% for obj in list_dic %}
+                                                            <option value={{ obj.yuancailiao_id }}>{{ obj.yuancailiao_id }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                        </div>
+
+                                        <div class="mb-3 select2-sm">
+                                            <label class="form-label">依据原材料名称检索</label>
+
+                                                <div class="input-group">
+                                                    <select class="multiple-select" data-placeholder="Choose anything" multiple="multiple" name="yuancailiao_zhonglei">
+                                                        {% for obj in list_dic %}
+                                                            <option value={{ obj.yuancailiao_zhonglei }}>{{ obj.yuancailiao_zhonglei }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                        <div class="mb-3 select2-sm">
+                                            <label class="form-label">依据供应商检索</label>
+                                                <div class="input-group" >
+                                                    <select class="multiple-select" data-placeholder="Choose anything" multiple="multiple" name="gongyingshang_name">
+                                                        {% for obj in list_dic %}
+                                                            <option value={{ obj.gongyingshang_name }}>{{ obj.gongyingshang_name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class='bx bx-search-alt me-0'></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </form>
+
+                                        <div class="mb-3">
+{#                                            <label class="form-label">这暂时没想好要放什么复合条件检索</label>#}
+{#                                            <form class="form-horizontal" method="post" action="/purchase_department/">#}
+{#                                                {% csrf_token %}#}
+{#                                                <div class="input-group">#}
+{#                                                    <select class="multiple-select" data-placeholder="Choose anything" multiple="multiple" name="mult">#}
+{#                                                        {% for obj in list_dic %}#}
+{#                                                            <option value={{ obj.gongyingshang_id }}>{{ obj.gongyingshang_id }}</option>#}
+{#                                                        {% endfor %}#}
+{#                                                    </select>#}
+{#                                                    <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                                        <button type="submit" class="btn btn-primary">#}
+{#                                                            <i class='bx bx-search-alt me-0'></i>#}
+{#                                                        </button>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </form>#}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end row-->
+
+
+                    <div class="col-xl-11 mx-auto">
+                        <div class="input-group">
+                            <h4 class="mb-0 text-uppercase">
+                                <a name="come here">原材料供应商信息总览</a>
+                            </h4>
+                            <div class="ms-auto">
+                              <a href="/GYS_add" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>添加新的供应商货物信息</a>
+                            </div>
+                        </div>
+                       <hr>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                            <table id="example"  class="table mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>供应商名称</th>
+                                        <th>供应商编号</th>
+                                        <th>原材料名称</th>
+                                        <th>原材料编号</th>
+                                        <th>购买上限（千克）</th>
+                                        <th>原材料单价（元/千克）</th>
+                                        <th>生产日期</th>
+                                        <th>细节&采购</th>
+                                        <th>信息更新</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for obj in list_dic_search %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ms-2">
+                                                        <h6 class="mb-0 font-14">
+                                                            <a href="/GYS_show?gongyingshang_id={{ obj.gongyingshang_id }}">
+                                                                {{ obj.gongyingshang_name }}
+                                                            </a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{ obj.gongyingshang_id }}</td>
+                                            <td>{{ obj.yuancailiao_zhonglei }}</td>
+                                            <td>{{ obj.yuancailiao_id }}</td>
+                                            <td>{{ obj.yuancailiao_max }}</td>
+                                            <td>{{ obj.yuancailiao_danjia }}</td>
+                                            <td>{{ obj.shengchanriqi }}</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm radius-30 px-4" href="/details_purchase?yuancailiao_id={{ obj.yuancailiao_id }}&number=1&flag=0">
+                                                    查看细节
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-primary btn-xs" href="/GYS_edit?yuancailiao_id={{ obj.yuancailiao_id }}">
+                                                    编辑
+                                                </a>
+                                                <a class="btn btn-danger btn-xs" href="/GYS_delete?yuancailiao_id={{ obj.yuancailiao_id }}">
+                                                    删除
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!--end page wrapper -->
+
+{% endblock %}
+</html>

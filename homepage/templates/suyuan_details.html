@@ -1,0 +1,241 @@
+{% extends 'layout.html' %}
+{% block content %}
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">溯源详情</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<div class="col">
+									<li class="breadcrumb-item active" aria-current="page"></li>
+									<div>溯源的商品编号：<span class="badge bg-dark">{{shangpin.shangpin_id}}</span>
+									</div>
+								</div>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-20 mx-auto">
+						<h4><span class="badge rounded-pill bg-secondary">商品采购溯源信息</span></h4>
+						<hr>
+						<div class="card">
+							<div class="card-body">
+								<table class="table table-bordered mb-0">
+									<thead>
+										<tr style="height:50px">
+											<th scope="col"><font size="3" color="red-black">生鲜源地</th>
+											<th scope="col"><font size="3" color="red-black">生鲜供应商编号</th>
+											<th scope="col"><font size="3" color="red-black">供应商联系方式</th>
+											<th scope="col"><font size="3" color="red-black">采购后存放仓库编号</th>
+											<th scope="col"><font size="3" color="red-black">仓库地址</th>
+											<th scope="col"><font size="3" color="red-black">仓库负责人编号</th>
+											<th scope="col"><font size="3" color="red-black">仓库负责人联系方式</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr style="height:50px">
+											<td>{{shangpin.shangpin_chandi}}</td>
+											<td>{{shangpin.suoshugongyingshang_id}}</td>
+											<td>{{gongyingshang.gongyingshang_dianhua}}</td>
+											<td>{{cangku.cangku_id}}</td>
+											<td>{{cangku.cangku_dizhi}}</td>
+											<td>{{cangku.cangku_manager}}</td>
+											<td>{{manager.yuangong_dianhua}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-20 mx-auto">
+						<h4><span class="badge rounded-pill bg-secondary">商品配送溯源信息</span></h4>
+						<hr>
+						<div class="card">
+							<div class="card-body">
+								<table class="table table-bordered mb-0">
+									<thead>
+										<tr style="height:50px">
+											<th scope="col"><font size="3" color="red-black">该生鲜所属订单号</th>
+											<th scope="col"><font size="3" color="red-black">订单发货地址</th>
+											<th scope="col"><font size="3" color="red-black">配送员编号</th>
+											<th scope="col"><font size="3" color="red-black">配送员联系方式</th>
+											<th scope="col"><font size="3" color="red-black">订单目的地</th>
+											<th scope="col"><font size="3" color="red-black">详细送货路线</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr style="height:50px">
+											<td>{{shangpin.suoshudingdan_id}}</td>
+											<td>{{cangku.cangku_dizhi}}</td>
+											<td>{{xiaoshoudingdan.peisongyuan_id}}</td>
+											<td>{{peisongyuan.yuangong_dianhua}}</td>
+											<td>{{xiaoshoudingdan.shouhuodizhi}}</td>
+											<td>
+												<a href="/wuliu_map?id={{shangpin.suoshudingdan_id}}">点击查看详细送货路线</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-20 mx-auto">
+						<h4><span class="badge rounded-pill bg-secondary">商品去向追踪信息</span></h4>
+						<hr>
+						<div class="card">
+							<div class="card-body">
+								<table class="table table-bordered mb-0">
+									<thead>
+										<tr style="height:50px">
+											<th scope="col"><font size="3" color="red-black">该生鲜所属订单编号</th>
+											<th scope="col"><font size="3" color="red-black">下单顾客id</th>
+											<th scope="col"><font size="3" color="red-black">顾客联系方式</th>
+											<th scope="col"><font size="3" color="red-black">该生鲜出产时间</th>
+											<th scope="col"><font size="3" color="red-black">该生鲜保质期</th>
+											<th scope="col"><font size="3" color="red-black">该生鲜送达时间</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr style="height:50px">
+											<td>{{shangpin.suoshudingdan_id}}</td>
+											<td>{{xiaoshoudingdan.xiadanzhanghu}}</td>
+											<td>{{xiaoshoudingdan.shouhuorenlianxi}}</td>
+											<td>{{shangpin.shangpin_shengchanriqi}}</td>
+											<td>{{shangpin.shangpin_baozhiqi}}</td>
+											<td>{{xiaoshoudingdan.songdashijian}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+		<footer class="page-footer">
+			<p class="mb-0">Copyright © 2021. All right reserved.</p>
+		</footer>
+	</div>
+	<!--end wrapper-->
+	<!--start switcher-->
+	<div class="switcher-wrapper">
+		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+		</div>
+		<div class="switcher-body">
+			<div class="d-flex align-items-center">
+				<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+				<button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+			</div>
+			<hr>
+			<h6 class="mb-0">Theme Styles</h6>
+			<hr>
+			<div class="d-flex align-items-center justify-content-between">
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked="">
+					<label class="form-check-label" for="lightmode">Light</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode">
+					<label class="form-check-label" for="darkmode">Dark</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
+					<label class="form-check-label" for="semidark">Semi Dark</label>
+				</div>
+			</div>
+			<hr>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
+				<label class="form-check-label" for="minimaltheme">Minimal Theme</label>
+			</div>
+			<hr>
+			<h6 class="mb-0">Header Colors</h6>
+			<hr>
+			<div class="header-colors-indigators">
+				<div class="row row-cols-auto g-3">
+					<div class="col">
+						<div class="indigator headercolor1" id="headercolor1"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor2" id="headercolor2"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor3" id="headercolor3"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor4" id="headercolor4"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor5" id="headercolor5"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor6" id="headercolor6"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor7" id="headercolor7"></div>
+					</div>
+					<div class="col">
+						<div class="indigator headercolor8" id="headercolor8"></div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<h6 class="mb-0">Sidebar Backgrounds</h6>
+			<hr>
+			<div class="header-colors-indigators">
+				<div class="row row-cols-auto g-3">
+					<div class="col">
+						<div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
+					</div>
+					<div class="col">
+						<div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="static/js/bootstrap.bundle.min.js"></script>
+	<!--plugins-->
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/simplebar.min.js"></script>
+	<script src="static/js/metisMenu.min.js"></script>
+	<script src="static/js/perfect-scrollbar.js"></script>
+	<!--app JS-->
+	<script src="static/js/app.js"></script>
+</body>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>自定义Marker图标</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <style>
+        body,
+        html,
+        #container {
+            overflow: hidden;
+            width: 1600px;
+            height: 800px;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+        </style>
+        <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=lM8kGcR5Tgmh7XuQNqrXT2NK0xnsZy3C"></script>
+    </head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script type="text/javascript">
+var map = new BMapGL.Map('container');
+var zhuangtai="{{data.dingdanzhuangtai}}"
+if (zhuangtai=="配送中"){
+var startIcon = new BMapGL.Icon('/static/image/9.png', new BMapGL.Size(104,70));
+var start = new BMapGL.Point({{data.cangku_jingdu}}, {{data.cangku_weidu}});
+var end = new BMapGL.Point({{data.mudidi_jingdu}}, {{data.mudidi_weidu}});
+var riding = new BMapGL.RidingRoute(map, { 
+    renderOptions: { 
+    map: map, 
+    autoViewport: true 
+    },
+    onMarkersSet:function(res){
+        console.info(res);
+        var myStart=new BMapGL.Marker(start,{icon:startIcon})
+        map.removeOverlay(res[0].marker);
+        map.addOverlay(myStart)
+    }
+});
+riding.search(start, end);
+var opts = {
+    position: new BMapGL.Point({{data.cangku_jingdu}}, {{data.cangku_weidu}}), // 指定文本标注所在的地理位置
+    offset: new BMapGL.Size(-120, -80) // 设置文本偏移量
+};
+// 创建文本标注对象
+var label = new BMapGL.Label('订单正在配送中，预计需要10分钟', opts);
+}
+if (zhuangtai=="已送达"){
+var endIcon = new BMapGL.Icon('/static/image/9.png', new BMapGL.Size(104,70));
+var start = new BMapGL.Point({{data.cangku_jingdu}}, {{data.cangku_weidu}});
+var end = new BMapGL.Point({{data.mudidi_jingdu}}, {{data.mudidi_weidu}});
+var riding = new BMapGL.RidingRoute(map, { 
+    renderOptions: { 
+    map: map, 
+    autoViewport: true 
+    },
+    onMarkersSet:function(res){
+        console.info(res);
+        var myend=new BMapGL.Marker(end,{icon:endIcon})
+        map.removeOverlay(res[1].marker);
+        map.addOverlay(myend)
+    }
+});
+riding.search(start, end);
+var opts = {
+    position: new BMapGL.Point({{data.mudidi_jingdu}}, {{data.mudidi_weidu}}), // 指定文本标注所在的地理位置
+    offset: new BMapGL.Size(-50, -80) // 设置文本偏移量
+};
+// 创建文本标注对象
+var label = new BMapGL.Label('订单已送达', opts);
+}
+map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+// 自定义文本标注样式
+label.setStyle({
+    color: 'blue',
+    borderRadius: '5px',
+    borderColor: '#ccc',
+    padding: '10px',
+    fontSize: '16px',
+    height: '50px',
+    lineHeight: '30px',
+    fontFamily: '微软雅黑'
+});
+map.addOverlay(label);
+</script>
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="page-wrapper">
+            <div class="page-content">
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">订单溯源</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">订单溯源查询结果</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!--end breadcrumb-->
+            
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-lg-flex align-items-center mb-4 gap-3">
+                            <div class="position-relative">
+                                <div class="mb-0 font-20">订单{{xiaoshou_id}}溯源信息：</div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>该订单中所有货品的货品号</th>
+                                        <th>货品源地</th>
+                                        <th>货品出产日期</th>
+                                        <th>查看该货品溯源详情</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for every_shangpin in suyuan_info %}                                          
+                                    <tr>     
+                                        <td>{{every_shangpin.shangpin_id}}</td> 
+                                        <td>{{every_shangpin.shangpin_chandi}}</td>                                          
+                                        <td>{{every_shangpin.shangpin_shengchanriqi}}</td>                                       
+                                        <td>
+                                            <a href="/page_kf/suyuan/suyuan_details/?nid={{every_shangpin.shangpin_id}}">点击查看溯源详情</a> 
+                                        </td>                                                                                                                                      
+                                    </tr>											
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div>
+                </div>
+                <head>
+                    <meta charset="utf-8">
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+                    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                    <style>
+                    body,
+                    html {
+                        height:100%;
+                        width: 100%;
+                        margin: 0;
+                        font-family: "微软雅黑";
+                    }
+                    #allmap {
+                        overflow:hidden;
+                        height: 400px;
+                        width: 100%;
+                        margin: 0;
+                        font-family: "微软雅黑";
+                        z-index:9999;
+                    }
+                    #r-result {
+                        width:200px;
+                        font-size: 14px;
+                    }
+                    </style>
+                    <script type="text/javascript"
+                            src="http://api.map.baidu.com/api?v=2.0&ak=8vIN7QNjbyWpkeKcNSX29YHmX0eBErOX"></script>
+                </head>
+                <div class="card">
+                    <div class="card-body">                          
+                        <div id="allmap"></div>
+                        <div id="r-result">
+                            <input type="button" value="显示本订单相关农场地址" onclick="get_location()"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+</html>                    
+<script type="text/javascript">
+// 百度地图API功能
+var map = new BMap.Map("allmap");
+map.centerAndZoom(new BMap.Point(118.3088230000, 32.3002390000), 18);
+map.enableScrollWheelZoom(true);
+var navigationControl = new BMap.NavigationControl({
+    // 靠左上角位置
+    anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+    // LARGE类型
+    type: BMAP_NAVIGATION_CONTROL_LARGE,
+    // 启用显示定位
+    enableGeolocation: true
+});
+map.addControl(navigationControl);
+
+function get_location() {
+
+    var address_latitude ={{ address_latitude |safe}};
+    var address_longitude ={{ address_longitude|safe }};
+    var address_data ={{ address_data |safe}};
+
+
+    var point = []; //存放标注点经纬信息的数组
+    var marker = []; //存放标注点对象的数组
+    for (var i = 0; i < address_longitude.length; i++) {
+        point[i] = new BMap.Point(address_longitude[i], address_latitude[i]); //循环生成新的地图点
+        marker[i] = new BMap.Marker(point[i]); //按照地图点坐标生成标记
+        map.addOverlay(marker[i]);
+    }
+
+    for (i = 0; i < marker.length; i++) {
+        (function () {
+            var index = i;
+            marker[index].addEventListener('click', function () {
+                this.openInfoWindow(new BMap.InfoWindow(address_data[index]));
+            });
+        })();
+    }
+}
+</script>
+
+    
+{% endblock %}

@@ -1,0 +1,21 @@
+<form action="#" method="get">
+
+    {% for i in all %}
+
+        <tr>
+        <td class="text-center">
+        <input type="checkbox" name="checkbox">
+        </td>
+        <td class="text-center">
+        <p>{{ i.party_id }}</p>
+        </td>
+        <td>
+        <p>{{ i.party_name }}</p>
+        </td>
+        <td class="text-center">
+        <img src="../media/{{ MEDIA_URL }}{{ i.party_img }}" alt="" id="img_id"  class="party_img">
+        </td>
+        </tr>
+  	{% endfor %}
+  	
+  	</form>

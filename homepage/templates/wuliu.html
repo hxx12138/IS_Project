@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">物流订单信息</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="/wuliu/"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+      
+        <div class="card">
+            <div class="card-body">
+                <div class="d-lg-flex align-items-center mb-4 gap-3">
+                    <form class="form-horizontal" method="post" action="/wuliu/">
+                        {% csrf_token %}
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="submit" class="btn btn-primary">
+                                <i class='bx bx-search-alt me-0'></i>
+                            </button>
+                            <input type="text" name='cgid' placeholder="请输入要查询的订单号"> <span class="position-absolute top-50 product-show translate-middle-y"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>订单编号</th>
+                                <th>商品所属仓库</th>
+                                <th>下单账户</th>
+                                <th>订单状态</th>
+                                <th>配送员id</th>
+                                <th>配送员状态</th>
+                                <th>预计送达时间</th>
+                                <th>配送状态详情</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in data_list %}
+                            <tr>
+                                <td>{{obj.xiaoshou_id}}</td>
+                                <td>{{obj.cangku_id}}</td>
+                                <td>{{obj.xiadanzhanghu}}</td>
+                                <div class="if/else">
+                                {% if obj.dingdanzhuangtai == '已送达'%}
+                                <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>已送达</div></td>
+                                {% elif obj.dingdanzhuangtai == '配送中'%}
+                                <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>配送中</div></td>
+                                {% elif obj.dingdanzhuangtai == '未配送'%}
+                                <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>未配送</div></td>
+                                {% endif %}
+                                </div>
+                                <td>{{obj.peisongyuan_id}}</td>
+                                <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>核酸阴性</div></td>
+                                <td>{{obj.songdashijian}}</td>
+                                <td><a href="/wuliu_time?id={{obj.xiaoshou_id}}"><button type="button" class="btn btn-primary btn-sm radius-30 px-4">点击查看详情</button></a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

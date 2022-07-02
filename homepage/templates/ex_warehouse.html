@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">库存部门</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">出库订单管理</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary">其他功能</button>
+							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                <a class="dropdown-item" href="/receipt_confirm/">收货确认</a>
+								<a class="dropdown-item" href="/storage_details/">库存管理</a>
+								<a class="dropdown-item" href="/ex_warehouse/">出库管理</a>
+                                <a class="dropdown-item" href="/warehouse_manage/">仓库查询</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+				<div class="card">
+					<div class="card-body">
+						<div id="invoice">
+							<div class="invoice overflow-auto">
+								<div>
+									<header>
+										<div class="row">
+											<div class="col">
+												<a href="javascript:;">
+													<img src="/static/picture/haima.png" height="100" width="100" alt="">
+												</a>
+											</div>
+											<div class="col company-details">
+												<h2 class="name">
+									<a target="_blank" href="javascript:;">
+									海马生鲜
+									</a>
+								</h2>
+												<div>销售订单</div>
+                                                <div>出货指派</div>
+												<div>haima@haimashengxian.com</div>
+											</div>
+										</div>
+									</header>
+									<main>
+										<table>
+											<thead>
+												<tr>
+													<th>订单编号</th>
+													<th class="text-left">订单详情</th>
+													<th class="text-right">收货地址</th>
+													<th class="text-right">选择出货仓库</th>
+													<th class="text-right">确定出货</th>
+												</tr>
+											</thead>
+											<tbody>
+                                            {% for obj in data_list %}
+                                                <form class="form-horizontal" method="post" action="/ex_warehouse/">
+                                                    {% csrf_token %}
+												<tr>
+													<td class=""><input type="text" class="form-control" name="id" value={{ obj.xiaoshou_id }}></td>
+													<td class="text-left">
+{#														<h3>#}
+{#										<a target="_blank" href="javascript:;">#}
+{#										Youtube channel#}
+{#										</a>#}
+{#										</h3>#}
+                                                        <a target="_blank" href="javascript:;">
+									   </a> {{ obj.dingdanxiangqing }}</td>
+                                                    <td class="text">{{ obj.shouhuodizhi }}</td>
+													<td>
+                                                        <select class="form-select" name="cangku">
+                                                        <option value="01">01 号仓库</option>
+                                                        <option value="02">02 号仓库</option>
+                                                        <option value="03">03 号仓库</option>
+                                                        <option value="04">04 号仓库</option>
+                                                        </select>
+                                                    </td>
+													<td>
+                                                       <button type="submit" class="btn btn-primary">确认出货</button>
+                                                    </td>
+												</tr>
+                                                </form>
+                                            {% endfor %}
+											</tbody>
+										</table>
+                                    <ul class="pagination">
+								{{ page_string }}
+							        </ul>
+{#										<div class="thanks">Thank you!</div>#}
+									</main>
+									<footer>库存信息更新可能存在一定的延迟</footer>
+								</div>
+								<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+								<div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

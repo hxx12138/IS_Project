@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">财务管理</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">开具发票</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary">其他功能</button>
+							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                <a class="dropdown-item" href="/purchase_orders/">采购订单管理</a>
+								<a class="dropdown-item" href="/sales_orders/">销售订单管理</a>
+								<a class="dropdown-item" href="/expenditure_manage/">支出管理</a>
+                                <a class="dropdown-item" href="/income_manage/">收入管理</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+				<div class="card">
+					<div class="card-body">
+						<div id="invoice">
+							<div class="toolbar hidden-print">
+								<div class="text-end">
+									<button type="button" class="btn btn-dark"><i class="fa fa-print"></i>打印发票</button>
+									<button type="button" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i>导出为PDF</button>
+								</div>
+								<hr>
+							</div>
+							<div class="invoice overflow-auto">
+								<div>
+									<main>
+										<div class="row contacts">
+											<div class="col invoice-to">
+												<div class="text-gray-light">发票对象:</div>
+												<h2 class="to">北京航空航天大学</h2>
+												<div class="address">北京市海淀区花园路街道学院路37号北京航空航天大学</div>
+												<div class="email"><a href="mailto:john@example.com">bhuniversity@buaa.edu.cn</a>
+												</div>
+											</div>
+											<div class="col invoice-details">
+												<h1 class="invoice-id">编号:2206010001</h1>
+												<div class="date">开票日期:01/06/2022</div>
+												<div class="date">过期日期:30/06/2022</div>
+											</div>
+										</div>
+										<table>
+											<thead>
+												<tr>
+                                                    <th>编号</th>
+													<th class="text-left">订单详情</th>
+													<th class="text-right">单价</th>
+													<th class="text-right">数量</th>
+													<th class="text-right">总价</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="no">01</td>
+													<td class="text-left">
+														<h3>
+										<a target="_blank" href=# title="生产日期:2022/05/28,保质期:30天,产品编号:2205290001,仓库:001">
+										特级红富士苹果
+										</a>
+                                                        </h3><a href=# title="原材料编号:2205290010028">原产地:山东省烟台市栖霞市胶东农场</a>
+													<td class="unit">10.00</td>
+													<td class="qty">100</td>
+													<td class="total">1000.00</td>
+												</tr>
+												<tr>
+													<td class="no">02</td>
+													<td class="text-left">
+														<h3>
+                                                            <a href=# title="生产日期:2022/05/30,保质期:3天,产品编号:2205310002,仓库:002">优级生牛肉</a>
+                                                        </h3>
+                                                    <a href=# title="原材料编号:2205310020008">原产地：河南省郑州市金太阳牧场</a>
+                                                    </td>
+													<td class="unit">45.00</td>
+													<td class="qty">300</td>
+													<td class="total">13500.00</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td colspan="2">合计</td>
+													<td>14500.00</td>
+												</tr>
+												<tr>
+													<td colspan="2"></td>
+													<td colspan="2">税收 25%</td>
+													<td>3625.00</td>
+												</tr>
+												<tr>
+													<td colspan="2"></td>
+													<td colspan="2">总计</td>
+													<td>18125.00</td>
+												</tr>
+											</tfoot>
+										</table>
+										<div class="notices">
+											<div>注意：</div>
+											<div class="notice">30天后，未付余额将收取1.5%的财务费用</div>
+										</div>
+									</main>
+									<footer>发票创建于计算机，无需签名和盖章即可生效。</footer>
+								</div>
+								<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+								<div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

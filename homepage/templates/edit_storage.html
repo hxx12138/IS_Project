@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">库存管理</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">库存商品信息</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary">更多功能</button>
+							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                <a class="dropdown-item" href="/receipt_confirm/">收货确认</a>
+								<a class="dropdown-item" href="/storage_details /">库存管理</a>
+								<a class="dropdown-item" href="javascript:;">出库管理</a>
+                                <a class="dropdown-item" href="javascript:;">仓库查询</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+              <div class="card">
+				  <div class="card-body p-4">
+					  <h5 class="card-title">修改 {{ info.shangpin_id }} 号库存商品信息</h5>
+					  <hr>
+                       <div class="form-body mt-4">
+                    <form class="form-horizontal" method="post" action="/edit_storage/">
+                    {% csrf_token %}
+					    <div class="row">
+						   <div class="col-lg-8">
+                           <div class="border border-3 p-4 rounded">
+                               <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">所在仓库</label>
+								<input class="form-control" name="cangku" value={{ info.cangku_id }}></input>
+							  </div>
+                               <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">商品名称</label>
+								<input class="form-control" name="name" value={{ info.shangpin_zhonglei }}></input>
+							  </div>
+                               <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">商品品质</label>
+								<input class="form-control" name="zhiliang" value={{ info.shangpin_zhiliang }}></input>
+							  </div>
+                               <div class="mb-3">
+								<label for="inputProductDescription" class="form-label">商品单价</label>
+								<input class="form-control" name="price" value={{ info.shangpin_danjia }}></input>
+							  </div>
+                            </div>
+						   </div>
+						   <div class="col-lg-4">
+							<div class="border border-3 p-4 rounded">
+                              <div class="row g-3">
+								  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">商品产地</label>
+									<input type="text" class="form-control" name="chandi" value={{ info.shangpin_chandi }}>
+								  </div>
+                                  <div class="col-md-6">
+									<label for="inputProductType" class="form-label">库存数量</label>
+									<input type="text" class="form-control" name="shuliang" value={{ info.shuliang }}>
+								  </div>
+                                  <div class="col-12">
+									<label for="inputCollection" class="form-label">商品保质期</label>
+									<input type="text" class="form-control" name="baozhiqi" value={{ info.shangpin_baozhiqi }}>
+								  </div>
+								  <div class="col-12">
+									<label for="inputVendor" class="form-label">核酸检测情况</label>
+									<select class="form-select" name="status">
+										<option></option>
+										<option value="阴性">阴性</option>
+										<option value="阳性">阳性</option>
+									  </select>
+								  </div>
+								  <div class="col-12">
+									  <div class="d-grid">
+                                         <button type="submit" class="btn btn-primary">保存修改</button>
+									  </div>
+								  </div>
+							  </div>
+						  </div>
+						  </div>
+					   </div><!--end row-->
+                           </form>
+					</div>
+				  </div>
+			  </div>
+			</div>
+		</div>
+{% endblock %}

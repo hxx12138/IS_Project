@@ -1,0 +1,192 @@
+{% extends 'layout.html' %}
+<html lang="en">
+{% block content %}
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Logo</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="/index">
+                                        <i class="bx bx-home-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="/purchase_department">
+                                        原材料&供应商信息检索
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    原材料细节展示&采购
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                <div class="ms-auto">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary">预采购订单管理</button>
+                        <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                            <a class="dropdown-item" href="/purchase_orders_show/">查看当前预采购订单</a>
+                        </div>
+                    </div>
+                </div>
+				</div>
+				<!--end breadcrumb-->
+
+				 <div class="card">
+					<div class="row g-0">
+					  <div class="col-md-4 border-end">
+						<div class="row mb-3 row-cols-auto g-2 justify-content-center mt-3">
+							<div class="col">
+                                <img src="/static/picture/蒙牛的肉.jpg" width="350" class="border rounded cursor-pointer" alt="">
+                            </div>
+						</div>
+					  </div>
+					  <div class="col-md-8">
+						<div class="card-body">
+                          <h4 class="card-title">{{ details_purchase.yuancailiao_zhonglei }}</h4>
+						  <div class="d-flex gap-3 py-3">
+							<div class="cursor-pointer">
+								<i class='bx bxs-star text-warning'></i>
+								<i class='bx bxs-star text-warning'></i>
+								<i class='bx bxs-star text-warning'></i>
+								<i class='bx bxs-star text-warning'></i>
+								<i class='bx bxs-star text-secondary'></i>
+							  </div>
+							  <div>1452 次浏览</div>
+							  <div class="text-success"><i class='bx bxs-cart-alt align-middle'></i> 134 次客户购买</div>
+						  </div>
+						  <div class="mb-3">
+							<span class="price h4">{{ details_purchase.yuancailiao_danjia }}</span>
+							<span class="text-muted">/千克</span>
+						</div>
+						  <p class="card-text fs-6">
+                              这里应该是描述，但是{{ details_purchase.yuancailiao_zhonglei }}实在是太贵了，我还没有想好怎么解释这个事情。
+                          </p>
+						  <dl class="row">
+
+							<dt class="col-sm-3">原材料编号：</dt>
+							<dd class="col-sm-9">{{ details_purchase.yuancailiao_id }}</dd>
+
+							<dt class="col-sm-3">供应商：</dt>
+							<dd class="col-sm-9">
+                                <a href="/GYS_show?gongyingshang_id={{ details_purchase.gongyingshang_id }}">
+                                    {{ details_purchase.gongyingshang_name }}
+                                </a>
+
+                            </dd>
+
+							<dt class="col-sm-3">产地：</dt>
+							<dd class="col-sm-9">{{ details_purchase.chandi }}</dd>
+
+							<dt class="col-sm-3">质量检测：</dt>
+							<dd class="col-sm-9">{{ details_purchase.yuancailiao_zhiliang }}</dd>
+
+							<dt class="col-sm-3">剩余可采购数量：(KG)</dt>
+							<dd class="col-sm-9" ><a name="yuancailiao_max">{{ details_purchase.yuancailiao_max}}</a></dd>
+						  </dl>
+						  <hr>
+                            {% csrf_token %}
+						  <div class="row row-cols-auto row-cols-1 row-cols-md-3 align-items-center">
+							<div class="col">
+								<label class="form-label">购买数量：</label>
+								<div class="input-group input-spinner">
+									<button class="btn btn-white" type="button" id="button-plus" >
+                                        <a href="/details_purchase?yuancailiao_id={{ details_purchase.yuancailiao_id }}&number={{ number }}&flag={{ 1 }}">
+                                            +
+                                        </a>
+                                    </button>
+								     <input type="text" class="form-control" value={{ number }} >
+									<button href="/anniu_subtract?number={{ number }}" class="btn btn-white" type="button" id="button-minus">
+                                        <a href="/details_purchase?yuancailiao_id={{ details_purchase.yuancailiao_id }}&number={{ number }}&flag={{ 2 }}">
+                                            -
+                                        </a>
+                                    </button>
+								</div>
+							</div>
+						</div>
+
+						<div class="d-flex gap-3 mt-3">
+							<a  class="btn btn-outline-primary" href="/purchase_orders_add/?yuancailiao_id={{ details_purchase.yuancailiao_id }}&number={{ number }}" >
+                                    添加到采购订单
+                                <i class='bx bxs-cart-alt'></i>
+                            </a>
+						</div>
+						</div>
+					  </div>
+					</div>
+                    <hr>
+					<div class="card-body">
+						<ul class="nav nav-tabs nav-primary mb-0" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a class="nav-link active" data-bs-toggle="tab" href="#primaryhome" role="tab" aria-selected="true">
+									<div class="d-flex align-items-center">
+										<div class="tab-icon"><i class='bx bx-comment-detail font-18 me-1'></i>
+										</div>
+										<div class="tab-title"> 产品描述 </div>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" data-bs-toggle="tab" href="#primaryprofile" role="tab" aria-selected="false">
+									<div class="d-flex align-items-center">
+										<div class="tab-icon"><i class='bx bx-bookmark-alt font-18 me-1'></i>
+										</div>
+										<div class="tab-title">推荐食用方式</div>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" data-bs-toggle="tab" href="#primarycontact" role="tab" aria-selected="false">
+									<div class="d-flex align-items-center">
+										<div class="tab-icon"><i class='bx bx-star font-18 me-1'></i>
+										</div>
+										<div class="tab-title">相关产品推荐</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+						<div class="tab-content pt-3">
+							<div class="tab-pane fade show active" id="primaryhome" role="tabpanel">
+                                <p>蒙牛的肉也是世界上最贵的牛肉，以肉质鲜嫩、营养丰富、适口性好驰名于世。</p>
+                                <p>这种牛饲养成本极高，因为农场主为了提高肉的质量和产量在牛的饲料中加入了优质的红葡萄酒。饲养员还必须给牛播放一些“蒙牛”喜欢的旋律优美的音乐，目的是调节它们的心情，给它们营造一个轻松，快乐的生长环境。</p>
+                                <p>此外，每天还要在“蒙牛”的皮毛上涂一层烧酌，用稻草刷子细心地给牛做“按摩”。这种方法可以促进牛的血液循环，使牛的皮下脂肪分布均匀，肉质细腻，文理清晰，吃起来肉质也会更加鲜嫩，而且有柔而不腻，入口即化的口感。</p>
+                            </div>
+							<div class="tab-pane fade" id="primaryprofile" role="tabpanel">
+                                <p>高端的食材，往往只需要最朴素的烹饪方式，忙碌了一天的许嘉璐先生，决定买一块儿蒙牛肉，来犒劳一下自己.....</p>
+                                <p>步骤1:         牛肉切块，加调料，鸡蛋，生粉浆制</p>
+                                <p>步骤2:         花生米炸熟，香芹切段。牛肉过油炸之外脆里嫩。</p>
+                                <p>步骤3:         辣椒蒜姜呛锅放入香芹，牛肉花生煸炒加味即可</p>
+                            </div>
+							<div class="tab-pane fade" id="primarycontact" role="tabpanel">
+                                <a href="/error"><p>传世经典：王守义十三香</p></a>
+                                <a href="/error"><p>刚被生出来的公鸡蛋</p></a>
+                                <a href="/error"><p>五毛钱一颗的花生米</p></a>
+                                <a href="/error"><p>产地是地沟的特级橄榄油</p></a>
+
+							</div>
+						</div>
+					</div>
+
+				  </div>
+
+
+			</div>
+		</div>
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+
+{% endblock %}
+</html>

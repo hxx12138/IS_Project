@@ -1,0 +1,144 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">库存部门</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">仓库管理</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary">其他功能</button>
+							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                <a class="dropdown-item" href="/receipt_confirm/">收货确认</a>
+								<a class="dropdown-item" href="/storage_details/">库存管理</a>
+								<a class="dropdown-item" href="/ex_warehouse/">出库管理</a>
+                                <a class="dropdown-item" href="/warehouse_manage/">仓库查询</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+				<h6 class="mb-0 text-uppercase">仓库详情</h6>
+				<hr>
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-4">
+					<div class="col">
+						<div class="card">
+							<img src="/static/picture/c1.png" class="card-img-top" alt="..." height="200">
+							<div class="card-body">
+								<h5 class="card-title">01号仓库</h5>
+								<p class="card-text">地址:北京市西城区卢沟桥路五里店258号院</p>
+                                <p class="card-text">经度:116.36611°E 纬度:39.91231°N</p>
+                                <p class="card-text">仓库容量:1000 m³</p>
+                                <p class="card-text">剩余容量:400 m³</p>
+                                <a href="/error/" class="btn btn-primary">点击查看仓库详情</a>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="/static/picture/c2.png" class="card-img-top" alt="..." height="200">
+							<div class="card-body">
+								<h5 class="card-title">02号仓库</h5>
+								<p class="card-text">地址:北京市海淀区苏州街鼎钧大厦</p>
+                                <p class="card-text">经度:116.304779°E 纬度:39.973221°N</p>
+                                <p class="card-text">仓库容量:2000 m³</p>
+                                <p class="card-text">仓库容量:500 m³</p>
+                                <a href="/error/" class="btn btn-danger">点击查看仓库详情</a>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="/static/picture/c3.png" class="card-img-top" alt="..." height="200">
+							<div class="card-body">
+								<h5 class="card-title">03号仓库</h5>
+								<p class="card-text">地址:北京市朝阳区新源南路8号楼</p>
+                                <p class="card-text">经度:116.45626°E 纬度:39.94793°N</p>
+                                <p class="card-text">仓库容量:1500 m³</p>
+                                <p class="card-text">仓库容量:600 m³</p>
+                                <a href="/error/" class="btn btn-success">点击查看仓库详情</a>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="/static/picture/c4.png" class="card-img-top" alt="..." height="200">
+							<div class="card-body">
+								<h5 class="card-title">04号仓库</h5>
+								<p class="card-text">地址:北京市怀柔区桥梓镇37号</p>
+                                <p class="card-text">经度:116.573975°E 纬度:40.290432°N</p>
+                                <p class="card-text">仓库容量:3000 m³</p>
+                                <p class="card-text">仓库容量:1000 m³</p>
+                                <a href="/error/" class="btn btn-warning">点击查看仓库详情</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end row-->
+{#				<div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-3">#}
+{#					<div class="col">#}
+{#						<div class="card bg-primary text-white">#}
+{#							<div class="card-body">#}
+{#								<h5 class="card-title text-white">Special title treatment</h5>#}
+{#								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col">#}
+{#						<div class="card bg-danger text-white">#}
+{#							<div class="card-body">#}
+{#								<h5 class="card-title text-white">Special title treatment</h5>#}
+{#								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col">#}
+{#						<div class="card bg-success text-white">#}
+{#							<div class="card-body">#}
+{#								<h5 class="card-title text-white">Special title treatment</h5>#}
+{#								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col">#}
+{#						<div class="card bg-dark text-white">#}
+{#							<div class="card-body">#}
+{#								<h5 class="card-title text-white">Special title treatment</h5>#}
+{#								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col">#}
+{#						<div class="card bg-warning">#}
+{#							<div class="card-body">#}
+{#								<h5 class="card-title text-dark">Special title treatment</h5>#}
+{#								<p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col">#}
+{#						<div class="card bg-info">#}
+{#							<div class="card-body">#}
+{#								<h5 class="card-title text-dark">Special title treatment</h5>#}
+{#								<p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+				<!--end row-->
+			</div>
+		</div>
+{% endblock %}

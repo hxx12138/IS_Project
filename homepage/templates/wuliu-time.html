@@ -1,0 +1,429 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">{{data.xiaoshou_id}}</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="/wuliu/"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{data.xiaoshou_id}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="if/else">
+        {% if data.dingdanzhuangtai == '配送中'%}
+        <div class="">
+            <div class="">
+                <!--container-->
+                <hr>
+                <div class="container py-2">
+                    <h2 class="font-weight-light text-center text-muted py-3">物流详细信息</h2>
+                    <!-- timeline item 1 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <!-- timeline item 1 center dot -->
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                            <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                        </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <!-- timeline item 1 event content -->
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">2022.6.1 9:00 AM</div>
+                                    <h4 class="card-title text-muted">已下单</h4>
+                                    <div class="row mt-5" font-size:0>
+									<form class="form-inline" method="POST" action="suyuan">
+										{% csrf_token %}
+										<p class="card-text">商品已下单,<a href="/page_kf/suyuan?id={{data.xiaoshou_id}}">点击查看详情</a ></p >
+									</form>
+								    </div>
+                                    <p class="card-text">商品备注：{{data.dingdanbeizhu}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 2 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card border-primary shadow radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-primary small">2022.6.1 9:09 AM</div>
+                                    <h4 class="card-title text-primary">配送中</h4>
+                                    <p class="card-text">配送员{{data.peisongyuan_id}}正在配送中,今日体温：36.5℃</p>
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-target="#t22_details" data-bs-toggle="collapse">点击查看配送详情 ▼</button>
+                                    <div class="collapse border" id="t22_details">
+                                        <div class="p-2 text-monospace">
+                                            <div>9:09 AM:骑手已接到订单</div>
+                                            <div>9:15 AM:骑手已到达仓库</div>
+                                            <div>9:23 AM:骑手正在前往目的地  <a href="/wuliu_map?id={{data.xiaoshou_id}}">点击查看配送详情</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                            <span class="badge rounded-pill bg-primary">&nbsp;</span>
+                        </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 3 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small"></div>
+                                    <h4 class="card-title">未送达</h4>
+                                    <p>目的地：{{data.shouhuodizhi}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 4 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small"></div>
+                                    <h4 class="card-title">未签收</h4>
+                                    <p>客户未签收</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+            </div>
+        </div>
+        {% elif data.dingdanzhuangtai == '已送达'%}
+        <div class="">
+            <div class="">
+                <!--container-->
+                <hr>
+                <div class="container py-2">
+                    <h2 class="font-weight-light text-center text-muted py-3">物流详细信息</h2>
+                    <!-- timeline item 1 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <!-- timeline item 1 center dot -->
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                            <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                        </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <!-- timeline item 1 event content -->
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">2022.6.3 9:00 AM</div>
+                                    <h4 class="card-title text-muted">已下单</h4>
+                                    <p class="card-text">商品已下单,<a href="/page_kf/suyuan?id={{data.xiaoshou_id}}">点击查看详情</a ></p >
+                                    <p class="card-text">商品备注：{{data.dingdanbeizhu}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 2 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card border-primary shadow radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">2022.6.3 9:09 AM</div>
+                                    <h4 class="card-title text-muted">配送中</h4>
+                                    <p class="card-text">配送员{{data.peisongyuan_id}}正在配送中，今日体温36.4℃</p>
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-target="#t22_details" data-bs-toggle="collapse">点击查看配送详情 ▼</button>
+                                    <div class="collapse border" id="t22_details">
+                                        <div class="p-2 text-monospace">
+                                            <div>9:09 AM:骑手已接到订单</div>
+                                            <div>9:15 AM:骑手已到达仓库</div>
+                                            <div>9:23 AM:骑手正在前往目的地  <a href="/wuliu_map?id={{data.xiaoshou_id}}">点击查看配送详情</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                            <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                        </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 3 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">2022.6.1 9:35 AM</div>
+                                    <h4 class="card-title">已送达</h4>
+                                    <p>商品已送达目的地：北京市海淀区学院路37号北京航空航天大学</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 4 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-primary small">2022.6.1 9:42 AM</div>
+                                    <h4 class="card-title text-primary">已签收</h4>
+                                    <p>客户已签收</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-primary">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+            </div>
+        </div>
+        {% elif data.dingdanzhuangtai == '未配送'%}
+        <div class="">
+            <div class="">
+                <!--container-->
+                <hr>
+                <div class="container py-2">
+                    <h2 class="font-weight-light text-center text-muted py-3">物流详细信息</h2>
+                    <!-- timeline item 1 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <!-- timeline item 1 center dot -->
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                            <span class="badge rounded-pill bg-primary">&nbsp;</span>
+                        </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <!-- timeline item 1 event content -->
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">2022.6.1 9:00 AM</div>
+                                    <h4 class="card-title text-muted">已下单</h4>
+                                    <p class="card-text">商品已下单,<a href="/page_kf/suyuan?id={{data.xiaoshou_id}}">点击查看详情</a ></p >
+                                    <p class="card-text">商品备注：{{data.dingdanbeizhu}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 2 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card border-primary shadow radius-15">
+                                <div class="card-body">
+                                    <h4 class="card-title text-muted">未配送</h4>
+                                    <p class="card-text">平台正在积极匹配骑手，请耐心等待</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                            <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                        </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 3 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <h4 class="card-title">未送达</h4>
+                                    <p>目的地：北京市海淀区学院路37号北京航空航天大学</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 4 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <h4 class="card-title">未签收</h4>
+                                    <p>客户未签收</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">财务管理</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">销售订单管理</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary">其他功能</button>
+							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                <a class="dropdown-item" href="/purchase_orders/">采购订单管理</a>
+                                <a class="dropdown-item" href="/sales_orders/">销售订单管理</a>
+								<a class="dropdown-item" href="/income_manage/">收入管理</a>
+								<a class="dropdown-item" href="/expenditure_manage/">支出管理</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+
+            <div class="if/else ">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-lg-flex align-items-center mb-4 gap-3">
+                            <form class="form-horizontal" method="post" action="/sales_orders/">
+                                 {% csrf_token %}
+							<div class="position-relative">
+								<div class="input-group input-group-lg">
+                                 <span class="input-group-text bg-transparent"><i class='bx bx-search'></i></span>
+                                 <input type="text" class="form-control ps-5 radius-30" name="soid" placeholder="请输入要查询的订单号">
+                                 <button type="submit" class="btn btn-primary btn-sm radius-30 px-4">查询订单</button>
+                                 </div>
+							</div>
+                            </form>
+						  <div class="ms-auto"><a href="/add_sales_order/" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>添加新订单</a></div>
+						</div>
+						<div class="table-responsive">
+							<table class="table mb-0">
+								<thead class="table-light">
+									<tr>
+										<th>销售订单编号</th>
+										<th>下单时间</th>
+                                        <th>客户ID</th>
+										<th>客户姓名</th>
+										<th>联系方式</th>
+{#										<th>物流人员编号</th>#}
+										<th>总金额</th>
+                                        <th>订单详情</th>
+                                        <th>订单状态</th>
+										<th>编辑/删除/票据</th>
+									</tr>
+								</thead>
+								<tbody>
+                                {% for obj in data_list %}
+									<tr>
+										<td>
+											<div class="d-flex align-items-center">
+{#												<div>#}
+{#													<input class="form-check-input me-3" type="checkbox" value="" aria-label="...">#}
+{#												</div>#}
+												<div class="ms-2">
+													<h6 class="mb-0 font-14">{{ obj.xiaoshou_id }}</h6>
+												</div>
+											</div>
+										</td>
+										<td>{{ obj.xiadanshijian }}</td>
+                                        <td>{{ obj.xiadanzhanghu }}</td>
+										<td>{{ obj.shouhuorenxingming }}</td>
+                                        <td>{{ obj.shouhuorenlianxi }}</td>
+{#										<td>{{ obj.peisongyuan_id }}</td>#}
+                                        <td>{{ obj.xiaoshou_zongjine }}</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm radius-30 px-4" href="/sales_order_detail/?nid={{ obj.xiaoshou_id }}" role="button">点击查看</a>
+                                        </td>
+
+                                         {% if obj.dingdanzhuangtai == '已送达'%}
+                                        <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>已送达</div></td>
+                                        {% elif obj.dingdanzhuangtai == '配送中' %}
+                                        <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>配送中</div></td>
+                                        {% elif obj.dingdanzhuangtai == '未配送'%}
+                                       <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>未配送</div></td>
+                                        {% elif obj.dingdanzhuangtai == '已取消'%}
+                                        <td><div class="badge rounded-pill text-danger bg-light-danger p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>已取消</div></td>
+                                        {% elif obj.dingdanzhuangtai == None %}
+                                        <td><div class="badge rounded-pill text-black-50 bg-light-black-50 p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>未更新</div></td>
+                                        {% endif %}
+
+										<td>
+                                            <div class="d-flex order-actions">
+												<a href="/edit_sales_order/?nid={{ obj.xiaoshou_id }}" class=""><i class='bx bxs-edit'></i></a>
+												<a href="/delete_sales_order/?nid={{ obj.xiaoshou_id }}" class="ms-3"><i class='bx bxs-trash'></i></a>
+											    <a href="/make_invoice/?nid={{ obj.xiaoshou_id }}" class="ms-3"><i class='bx bx-file'></i></a>
+                                            </div>
+										</td>
+									</tr>
+                                {% endfor %}
+								</tbody>
+							</table>
+                        <ul class="pagination">
+								{{ page_string }}
+							</ul>
+						</div>
+					</div>
+				</div>
+            </div>
+			</div>
+		</div>
+{% endblock %}
